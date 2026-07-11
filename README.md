@@ -1,4 +1,4 @@
-# Geraldine Nnene | Portfolio
+# Geraldine Nnene's Portfolio
 
 Multi-page React portfolio with React Router, lavender design, and butterfly animations.
 
