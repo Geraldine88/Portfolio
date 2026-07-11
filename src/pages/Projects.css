@@ -1,0 +1,65 @@
+.cat-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 2rem;
+}
+
+.cat-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .4rem .9rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--inkMid);
+  font-size: .8rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: all .2s;
+}
+
+.cat-tab:hover {
+  border-color: var(--lavMid);
+  color: var(--lav);
+}
+
+.cat-tab.act {
+  background: var(--lav);
+  color: white;
+  border-color: var(--lav);
+}
+
+.cat-count {
+  font-size: .68rem;
+  font-family: 'Space Mono', monospace;
+  background: rgba(255,255,255,.25);
+  padding: .1rem .35rem;
+  border-radius: 999px;
+  min-width: 20px;
+  text-align: center;
+}
+
+.cat-tab:not(.act) .cat-count {
+  background: var(--lavLight);
+  color: var(--lav);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem;
+}
+
+.card.wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 680px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .card.wide { grid-column: span 1; }
+  .cat-tabs { gap: .35rem; }
+  .cat-tab { font-size: .74rem; padding: .35rem .7rem; }
+}

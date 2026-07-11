@@ -1,0 +1,83 @@
+.contact-page { min-height: 80vh; display: flex; align-items: center; }
+
+.contact-center {
+  max-width: 580px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.contact-h {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.4rem;
+  color: var(--ink);
+  margin-bottom: .8rem;
+  line-height: 1.15;
+}
+.contact-h span { color: var(--lav); }
+
+.contact-sub {
+  color: var(--inkMute);
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+  font-size: .92rem;
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  margin-bottom: 1.75rem;
+  text-align: left;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 1rem 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all .22s;
+}
+.contact-card:hover {
+  border-color: var(--lavMid);
+  background: var(--lavLight);
+  transform: translateX(4px);
+}
+
+.cc-icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--lavLight);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--lav);
+  flex-shrink: 0;
+  transition: all .22s;
+}
+.contact-card:hover .cc-icon { background: var(--lav); color: white; }
+
+.cc-label { font-size: .7rem; color: var(--inkMute); margin-bottom: .1rem; font-family: 'Space Mono', monospace; letter-spacing: .06em; text-transform: uppercase; }
+.cc-val   { font-size: .88rem; font-weight: 500; color: var(--ink); }
+.cc-arrow { margin-left: auto; color: var(--inkMute); font-size: 1rem; transition: transform .2s; }
+.contact-card:hover .cc-arrow { transform: translate(2px, -2px); color: var(--lav); }
+
+.contact-copy { margin-bottom: 2rem; }
+.copy-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--inkMid);
+  padding: .5rem 1.2rem;
+  border-radius: 999px;
+  font-size: .82rem;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.copy-btn:hover { border-color: var(--lav); color: var(--lav); }
+
+.contact-note { color: var(--inkMute); font-size: .8rem; line-height: 1.7; }
