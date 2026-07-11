@@ -48,7 +48,7 @@ export default function Home() {
         <div className="hero-right fu3">
           <div className="hero-img-wrap">
             <img
-              src="/portfolio/hero-image.png"
+              src="https://raw.githubusercontent.com/Geraldine88/Portfolio/main/hero-image.png"
               alt="AI and security visualization"
             />
             <div className="hero-img-badge">
