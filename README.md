@@ -25,9 +25,9 @@ npm start
 npm install
 npm run deploy
 ```
-4. Your site will be live at: `https://Geraldine88.github.io/portfolio`
+4. This site will be live at: `https://Geraldine88.github.io/portfolio`
 
-## Update your live Streamlit links
+## Update to the live Streamlit links
 
 In `src/pages/Projects.jsx`, replace the demo URLs when you get your SER Streamlit link:
 - Line with `https://einzfugmkhkaqxcdp4zcc5.streamlit.app/` (ASL), update SER to its own link once deployed
