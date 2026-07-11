@@ -14,7 +14,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://Geraldine88.github.io/portfolio",
+  "homepage": "https://Geraldine88.github.io/Portfolio",
   "devDependencies": {
     "gh-pages": "^6.1.1"
   },

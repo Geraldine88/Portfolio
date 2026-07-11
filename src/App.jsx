@@ -14,7 +14,7 @@ import './pages/Contact.css';
 
 export default function App() {
   return (
-    <BrowserRouter basename="/portfolio">
+    <BrowserRouter basename="/Portfolio">
       <Butterflies />
       <Navbar />
       <main style={{ position: 'relative', zIndex: 1 }}>
