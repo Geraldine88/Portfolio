@@ -1,12 +1,12 @@
-# Geraldine Nnene — Portfolio
+# Geraldine Nnene's Portfolio
 
 Multi-page React portfolio with React Router, lavender design, and butterfly animations.
 
 ## Pages
-- `/` — About / Home
-- `/projects` — All projects with live demo links
-- `/experience` — Work history, education, skills
-- `/contact` — Contact cards with email, LinkedIn, GitHub
+- `/`  About / Home
+- `/projects`  All projects with live demo links
+- `/experience` Work history, education, skills
+- `/contact` Contact cards with email, LinkedIn, GitHub
 
 ## Run locally
 
@@ -30,4 +30,4 @@ npm run deploy
 ## Update your live Streamlit links
 
 In `src/pages/Projects.jsx`, replace the demo URLs when you get your SER Streamlit link:
-- Line with `https://einzfugmkhkaqxcdp4zcc5.streamlit.app/` (ASL) — update SER to its own link once deployed
+- Line with `https://einzfugmkhkaqxcdp4zcc5.streamlit.app/` (ASL), update SER to its own link once deployed
