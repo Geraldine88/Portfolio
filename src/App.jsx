@@ -1,23 +1,40 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Butterflies from './components/Butterflies';
+import React, { useEffect, useRef } from 'react';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Experience from './pages/Experience';
 import Contact from './pages/Contact';
+import Butterfly from './components/Butterfly';
 import './index.css';
-import './pages/Home.css';
-import './pages/Projects.css';
-import './pages/Experience.css';
-import './pages/Contact.css';
+
+function Navbar() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const fn = () => ref.current?.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
+  }, []);
+  return (
+    <nav className="navbar" ref={ref}>
+      <NavLink to="/" className="nav-logo nav-logo-tip">
+        GN
+        <span className="logo-tooltip">About me</span>
+      </NavLink>
+      <div className="nav-links">
+        <NavLink to="/projects">Projects</NavLink>
+        <NavLink to="/experience">Experience</NavLink>
+        <NavLink to="/contact" className="cta">Contact</NavLink>
+      </div>
+    </nav>
+  );
+}
 
 export default function App() {
   return (
     <BrowserRouter basename="/Portfolio">
-      <Butterflies />
+      <Butterfly />
       <Navbar />
-      <main style={{ position: 'relative', zIndex: 1 }}>
+      <main>
         <Routes>
           <Route path="/"           element={<Home />} />
           <Route path="/projects"   element={<Projects />} />
@@ -25,16 +42,7 @@ export default function App() {
           <Route path="/contact"    element={<Contact />} />
         </Routes>
       </main>
-      <footer style={{
-        borderTop: '1px solid var(--border)',
-        padding: '1.5rem 2rem',
-        textAlign: 'center',
-        color: 'var(--inkMute)',
-        fontFamily: "'Space Mono', monospace",
-        fontSize: '.72rem',
-        position: 'relative',
-        zIndex: 1,
-      }}>
+      <footer>
         Geraldine Nnene · Seattle/Tacoma, WA · geraldinennene@gmail.com
       </footer>
     </BrowserRouter>
