@@ -9,23 +9,52 @@ import './index.css';
 
 function Navbar() {
   const ref = useRef(null);
+  const [open, setOpen] = React.useState(false);
+
   useEffect(() => {
     const fn = () => ref.current?.classList.toggle('scrolled', window.scrollY > 40);
     window.addEventListener('scroll', fn, { passive: true });
     return () => window.removeEventListener('scroll', fn);
   }, []);
+
+  // Close drawer on route change
+  useEffect(() => { setOpen(false); }, []);
+
   return (
-    <nav className="navbar" ref={ref}>
-      <NavLink to="/" className="nav-logo nav-logo-tip">
-        GN
-        <span className="logo-tooltip">About me</span>
-      </NavLink>
-      <div className="nav-links">
-        <NavLink to="/projects">Projects</NavLink>
-        <NavLink to="/experience">Experience</NavLink>
-        <NavLink to="/contact" className="cta">Contact</NavLink>
+    <>
+      <nav className="navbar" ref={ref}>
+        <NavLink to="/" className="nav-logo nav-logo-tip" onClick={() => setOpen(false)}>
+          GN
+          <span className="logo-tooltip">About me</span>
+        </NavLink>
+
+        {/* Desktop links */}
+        <div className="nav-links">
+          <NavLink to="/projects">Projects</NavLink>
+          <NavLink to="/experience">Experience</NavLink>
+          <NavLink to="/contact" className="cta">Contact</NavLink>
+        </div>
+
+        {/* Hamburger button — mobile only */}
+        <button
+          className={`nav-burger${open ? ' is-open' : ''}`}
+          aria-label="Toggle menu"
+          onClick={() => setOpen(o => !o)}
+        >
+          <span /><span /><span />
+        </button>
+      </nav>
+
+      {/* Mobile drawer */}
+      <div className={`mobile-drawer${open ? ' is-open' : ''}`} onClick={() => setOpen(false)}>
+        <div className="mobile-drawer-inner" onClick={e => e.stopPropagation()}>
+          <NavLink to="/"          onClick={() => setOpen(false)}>Home</NavLink>
+          <NavLink to="/projects"  onClick={() => setOpen(false)}>Projects</NavLink>
+          <NavLink to="/experience"onClick={() => setOpen(false)}>Experience</NavLink>
+          <NavLink to="/contact"   onClick={() => setOpen(false)}>Contact</NavLink>
+        </div>
       </div>
-    </nav>
+    </>
   );
 }
 

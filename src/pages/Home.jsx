@@ -45,8 +45,8 @@ export default function Home() {
           <p className="h-role hero-role-txt">
             First-gen engineer from Cameroon. M.S. Information Technology +
             M.S. Electrical &amp; Computer Engineering (concurrent) · UW Tacoma 2026 · GPA 3.8.
-            I build AI systems that protect people — from fraud detection pipelines
-            to HIPAA-aware LLM platforms. I build things that ship.
+            I build AI systems that protect people. Fraud detection pipelines,
+            HIPAA-aware LLM platforms. I build things that ship.
           </p>
 
           <div className="h-pills pills-wrap">
