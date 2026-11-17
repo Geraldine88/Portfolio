@@ -133,67 +133,37 @@ export default function Butterfly() {
       const tailX = bx + 34 + Math.cos(tailAngle) * 22;
       const tailY = by + 28 + Math.sin(tailAngle) * 22;
 
-      // ── Spawn Tinkerbell pixie dust ──────────────────────────────
+      // ── Spawn dusty lavender trail ───────────────────────────────
       const moved = Math.hypot(bx - prevX, by - prevY);
-      if (moved > 0.3) {
-        const count = Math.random() < 0.4 ? 2 : 1;
-        for (let i = 0; i < count; i++) {
-          particles.push({
-            x:     tailX + (Math.random() - 0.5) * 8,
-            y:     tailY + (Math.random() - 0.5) * 8,
-            r:     0.6 + Math.random() * 1.8,   // tiny — pixie dust, not blobs
-            alpha: 0.9 + Math.random() * 0.1,
-            vx:    (Math.random() - 0.5) * 0.6,
-            vy:    0.2 + Math.random() * 0.5,   // drift downward like falling dust
-            decay: 0.018 + Math.random() * 0.014,
-            spin:  (Math.random() - 0.5) * 0.08,
-            hue:   Math.random(),               // gold / yellow-white / warm shimmer
-          });
-        }
-        if (particles.length > 110) particles.splice(0, particles.length - 110);
+      if (moved > 0.4) {
+        particles.push({
+          x:     tailX + (Math.random() - 0.5) * 5,
+          y:     tailY + (Math.random() - 0.5) * 5,
+          r:     1.2 + Math.random() * 2.8,
+          alpha: 0.22 + Math.random() * 0.16,
+          vx:    (Math.random() - 0.5) * 0.25,
+          vy:    (Math.random() - 0.5) * 0.25,
+          decay: 0.012 + Math.random() * 0.009,
+        });
+        if (particles.length > 55) particles.shift();
       }
 
-      // ── Draw pixie dust ──────────────────────────────────────────
+      // ── Draw trail: dusty lavender-white ─────────────────────────
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles = particles.filter(p => p.alpha > 0.01);
 
       for (const p of particles) {
-        // tiny star-point glow: sharp bright core, quick fade
-        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 2.2);
-
-        if (p.hue < 0.45) {
-          // pure bright gold
-          g.addColorStop(0,    `rgba(255,228, 80,${p.alpha})`);
-          g.addColorStop(0.35, `rgba(255,200, 40,${p.alpha * 0.6})`);
-          g.addColorStop(1,    'rgba(240,170,  0,0)');
-        } else if (p.hue < 0.78) {
-          // warm white-gold shimmer
-          g.addColorStop(0,    `rgba(255,248,180,${p.alpha})`);
-          g.addColorStop(0.35, `rgba(255,220,100,${p.alpha * 0.55})`);
-          g.addColorStop(1,    'rgba(240,190, 50,0)');
-        } else {
-          // electric pale yellow — the "sparkle" highlight
-          g.addColorStop(0,    `rgba(255,255,210,${p.alpha})`);
-          g.addColorStop(0.3,  `rgba(255,230,120,${p.alpha * 0.5})`);
-          g.addColorStop(1,    'rgba(255,200, 60,0)');
-        }
-
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+        g.addColorStop(0,   `rgba(230,220,245,${p.alpha})`);
+        g.addColorStop(0.5, `rgba(200,185,225,${p.alpha * 0.5})`);
+        g.addColorStop(1,   'rgba(180,165,210,0)');
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r * 2.2, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = g;
         ctx.fill();
-
-        // tiny bright pixel at the very centre for the "star" effect
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, Math.min(p.r * 0.4, 0.9), 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,230,${p.alpha * 0.95})`;
-        ctx.fill();
-
         p.x     += p.vx;
         p.y     += p.vy;
-        p.vx    += p.spin;
         p.alpha -= p.decay;
-        p.r     *= 0.993;
       }
 
       raf = requestAnimationFrame(tick);
